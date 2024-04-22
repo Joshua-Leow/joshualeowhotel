@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Rooms{% endblock %}
+{% block mainblock %}
+
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="container-subtitle">
+            <h4>Types of Room Available</h4>
+        </div>
+    </div>
+</div>
+
+{% for room_type in all_room_types %}
+<!-- for loop all_room_types -->
+<div class="row mt-3 justify-content-center">
+    <div class="col-xl-10 col-md-12">
+        <div class="card card-common h-100">
+            <div class="row ml-2 mr-2 justify-content-center">
+                <div class="card-title">
+                    <h5>{{room_type.name}} Single Room</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <img src="{{ url_for('static', filename='img/' ~ room_type.filename) }}"
+                                 alt="{{ room_type.name }} Single Room" class="img-fluid">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <img src="{{ url_for('static', filename='img/' ~ room_type.filename_layout) }}"
+                                 alt="{{ room_type.name }} Single Room Layout" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row ml-2 mr-2">
+                Dimension: L {{room_type.length}} m x W {{room_type.width}} m<br>
+                Area: {{room_type.area}} {{room_type.unit}} (approximately)<br>
+                Price: ${{room_type.price}} per night stay (empty room)<br>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+<br>
+<div class="row">
+    <div class="col-12">
+        <div class="container-subtitle">
+            <h4>Types of Bed Available</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3 justify-content-center">
+    {% for bed_type in all_bed_types %}
+    <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="card card-common h-100">
+            <div class="row ml-2 mr-2 justify-content-center">
+                <div class="card-title">
+                    <h5>{{bed_type.name}} Bed</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card-body">
+                    <img src="{{ url_for('static', filename='img/' ~ bed_type.filename) }}"
+                         alt="{{ bed_type.name }} Bed" class="img-fluid">
+                </div>
+            </div>
+            <div class="row ml-2 mr-2">
+                {{bed_type.description | capitalize }}<br>
+                Price: ${{bed_type.price}} per night stay<br>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Buttons -->
+<div class="row mb-5 justify-content-center">
+    <div class="col-4">
+        <div class="button-container">
+            <a href="#" class="btn btn-primary">Rooms</a>
+            <a href="/amenities" class="btn btn-primary">Amenities</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

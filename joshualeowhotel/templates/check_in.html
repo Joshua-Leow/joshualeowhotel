@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Check In{% endblock %}
+{% block mainblock %}
+<div class="card card-common h-100">
+    <div class="card-header">
+        <h1>Check In</h1>
+    </div>
+    <div class="card-body"><br>
+        <div class="row">
+            {% if message %}
+            <div class="ml-3 mr-3 mb-3 card-body shaded-background">
+                <span id="checkInMessage">{{ message }}</span>
+            </div>
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="card-body light-blue-background pb-2 mb-2">
+                    <span>Passport</span>
+                </div>
+            </div>
+            <div class="col-2">
+                <form action="/check_in" method="POST">
+                    <select name="passports" class="form-control" id="passportSelect" onchange="getBookings()">
+                        <!-- js function in myjs.js -->
+                        {% if users %} <!--If there is no user with confirmed bookings, the dropdown list is empty-->
+                        <option value="">Select option</option>
+                        {% for user in users %}
+                        <option value="{{user.email}}">{{user.guest.passport}}</option>
+                        {% endfor %}
+                        {% endif %}
+                    </select>
+                </form>
+            </div>
+        </div>
+        <div id="check_in_response"></div> <!--contains whole chunk of code from check_in_response.html-->
+    </div>
+</div>
+{% endblock %}

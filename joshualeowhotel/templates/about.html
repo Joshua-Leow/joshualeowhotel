@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}About Us{% endblock %}
+{% block mainblock %}
+
+<br><br><br><br>
+<div class="row">
+    <div class="col-12">
+        <div class="container">
+            <img src="{{ url_for('static', filename='img/SAMI.jpg') }}" alt="Picture of SAMI Hotel" class="img-fluid"/>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-1 justify-content-center">
+    <div class="col-10">
+        <div class="main-text" id="text-center">
+            <i>
+                <h2><span style="color: black;">Customise</span> your Stay and Pay exactly for what you choose!</h2>
+            </i>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4 justify-content-center">
+    <div class="col-4">
+        <div class="button-container">
+            <a href="/rooms" class="btn btn-primary">Rooms</a>
+            <a href="/amenities" class="btn btn-primary">Amenities</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

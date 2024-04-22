@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Upload{% endblock %}
+{% block mainblock %}
+<div class="card card-common h-100">
+    <div class="card-header">
+        <h2>Upload</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            {% if upload_status %}
+            <div class="ml-3 mr-3 mb-3 card-body shaded-background rounded-border">
+                <span>{{ NumOfUploads }} booking records added</span>
+            </div>
+            {% else %}
+            <br><br>
+            {% endif %}
+        </div>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input name="type" type="hidden" value="upload">
+            <div>
+                <label for='upload'>Upload CSV file</label>
+                <input class="upload" id='upload' name='file' type='file' accept='.csv' required>
+            </div>
+            <div class="row mr-2 justify-content-end">
+                <div class="col-md-1">
+                    <div class="button-container">
+                        <button type="submit" class="btn btn-primary" value="Upload">Upload</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br>
+        <div>
+            <h4><b>Sample CSV file:</b></h4>
+            <span>
+                email,name,passport,country,checkInDate,checkOutDate,room,bed,amenities
+thomas@abc.com,Thomas George,M1234567T,Malaysia,6/8/2024,10/8/2024,deluxe,super single,"[""WI-FI"",  ""TOWEL-BATH"", ""SHOWER-GEL"" ]"
+angel@abc.com,Angel Mae,P1234567A,Philippines,6/8/2024,11/8/2024,deluxe,super single,"[""WI-FI"", ""NEWSPAPER"", ""TOWEL-BATH"", ""SHOWER-GEL"", ""SHAMPOO"" ]"
+nurul@abc.com,Nurul Hidayat ,I1234567N,Indonesia,12/8/2024,15/8/2024,deluxe,super single,"[""WI-FI"", ""BREAKFAST"", ""TOWEL-BATH"", ""SHOWER-GEL"", ""SHAMPOO"" ]"
+ahmad@abc.com,Ahmad Setiawan ,I1234567A,Indonesia,19/8/2024,23/8/2024,deluxe,super single,"[""WI-FI"", ""NEWSPAPER"", ""BREAKFAST"",  ""TOWEL-BATH"", ""SHOWER-GEL"", ""SHAMPOO"" ]"
+daniel@abc.com,Daniel Portero,P1234567D,Philippines,27/8/2024,30/8/2024,standard,single,"[""WI-FI"", ""TOWEL-BATH"", ""SHOWER-GEL""]"
+mchan@abc.com,Mary Chan,S1234567M,Singapore,1/9/2024,3/9/2024,deluxe,super single,[]
+mtan@abc.com,Mary Tan,M1234567M,Malaysia,1/9/2024,3/9/2024,standard,super single,"[""WI-FI"", ""TOWEL-BATH"", ""SHOWER-GEL"", ""SHAMPOO"" ]"
+emilio@abc.com,Emilio Jurado,P1234567E,Philippines,9/9/2024,13/9/2024,standard,single,"[""WI-FI"", ""HOT-COFFEE"", ""TOWEL-BATH""]"
+wati@abc.com,Wati Endang ,I1234567W,Indonesia,10/9/2024,13/9/2024,standard,super single,"[""WI-FI"", ""HOT-COFFEE"", ""TOWEL-BATH"", ""SHOWER-GEL"", ""SHAMPOO"" ]"
+lestari@abc.com,Lestari Ahmad,I1234567L,Indonesia,21/9/2024,25/9/2024,standard,single,"[""WI-FI"", ""NEWSPAPER"", ""HOT-COFFEE"",  ""TOWEL-BATH"", ""SHOWER-GEL"", ""SHAMPOO"" ]"
+poh@abc.com,Peter Oh,S1234567P,Singapore,2/10/2024,3/10/2024,standard,single,"[ ""TOWEL-BATH"", ""SHOWER-GEL"", ""SHAMPOO"" ]"
+daniel@abc.com,Daniel Portero,P1234567D,Philippines,9/10/2024,11/10/2024,standard,single,"[""WI-FI"", ""BREAKFAST"", ""TOWEL-BATH"", ""SHOWER-GEL"", ""SHAMPOO"" ]"
+nurul@abc.com,Nurul Hidayat ,I1234567N,Indonesia,9/10/2024,13/10/2024,deluxe,single,"[""WI-FI"", ""BREAKFAST"", ""TOWEL-BATH"", ""SHOWER-GEL"", ""SHAMPOO"" ]"
+daniel@abc.com,Daniel Portero,P1234567D,Philippines,11/10/2024,12/10/2024,standard,super single,"[""WI-FI"", ""TOWEL-BATH"", ""SHOWER-GEL"",  ""HOT-COFFEE""]"
+emilio@abc.com,Emilio Jurado,P1234567E,Philippines,21/11/2024,23/11/2024,deluxe,super single,"[""WI-FI"", ""HOT-COFFEE"", ""TOWEL-BATH""]"
+jlee@abc.com,John Lee,M1234567J,Malaysia,26/11/2024,28/11/2024,deluxe,super single,"[""WI-FI"", ""BREAKFAST"", ""TOWEL-BATH"", ""SHOWER-GEL"", ""SHAMPOO"" ]"
+daniel@abc.com,Daniel Portero,P1234567D,Philippines,26/11/2024,30/11/2024,standard,single,"[""WI-FI"", ""TOWEL-BATH"", ""SHOWER-GEL"",  ""HOT-COFFEE""]"
+nurul@abc.com,Nurul Hidayat ,I1234567N,Indonesia,29/11/2024,3/12/2024,deluxe,super single,"[""WI-FI"", ""BREAKFAST"", ""TOWEL-BATH"", ""SHOWER-GEL"", ""SHAMPOO"" ]"
+            </span>
+        </div>
+    </div>
+</div>
+{% endblock %}

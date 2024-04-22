@@ -1,0 +1,52 @@
+{% from "_render_field.html" import render_field %}
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block mainblock %}
+<div class="card card-common h-100">
+    <div class="card-header">
+        <h2>Login</h2>
+    </div>
+    <div class="card-body">
+        {% if registerConfirm %}
+        <div class="card-body shaded-background">
+            <span>User registered successfully.</span>
+        </div>
+        <br>
+        {% else %}
+        <br><br>
+        {% endif %}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+            <li style="color:red;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        <form action="/login" method="post">
+            {{ render_field(form.email, type="email", placeholder="Enter email", id="email") }}
+            {{ render_field(form.password, type="password", placeholder="Enter password", id="pwd") }}
+            {{ form.hidden_tag() }}
+            <div>
+                <label class="col-md-4">
+                    <input type="checkbox" name="checkbox" value="1"> Remember Me
+                </label>
+            </div>
+            <div class="row mr-2 justify-content-end">
+                <div class="col-md-1">
+                    <div class="button-container">
+                        <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br>
+        <div>
+            <h5>Hotel staff admin account:</h5>
+            <h5>email: <b>admin@abc.com</b></h5>
+            <h5>password: <b>12345</b></h5>
+        </div>
+    </div>
+</div>
+{% endblock %}

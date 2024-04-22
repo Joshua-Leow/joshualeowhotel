@@ -1,0 +1,119 @@
+{% from "_render_field.html" import render_field %}
+{% extends "base.html" %}
+{% block title %}Book Room{% endblock %}
+{% block mainblock %}
+<div class="card card-common h-100">
+    <div class="card-header">
+        <h1>Book Room</h1>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            {% if not dates_validation %}
+            <div class="ml-5 mr-5 card-body shaded-background rounded-border">
+                <span style="color: red;">Please key in the correct dates.</span>
+            </div>
+            {% else %}
+            <br>
+            {% endif %}
+        </div>
+        {% if bookingConfirmation %}
+        <div class="mr-5 ml-5 card-body shaded-background rounded-border">
+            <span>Booking confirmed.</span><br>
+            <span>Check In: {{ roomBookingObj.checkInDate.strftime("%A, %d %B %Y") }}</span><br>
+            <span>Check Out: {{ roomBookingObj.checkOutDate.strftime("%A, %d %B %Y") }}</span><br>
+            <span>Room: {{ roomBookingObj.roomSet.RoomType.name }} ${{ roomBookingObj.roomSet.RoomType.price }},
+                {{ roomBookingObj.roomSet.BedType.name }} ${{ roomBookingObj.roomSet.BedType.price }}</span><br>
+            {% for amenity in roomBookingObj.roomSet.amenities %}
+            <span>{{ amenity.itemCode }} ${{ amenity.price }} {{ amenity.description }}</span><br>
+            {% endfor %}
+            <span>${{ roomBookingObj.roomSet.price | round(2) }} x {{ NoOfNights }} night(s) = ${{ TotalPrice | round(2)
+                }} </span><br>
+        </div>
+        {% endif %}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+            <li style="color:red;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        <form action="/book_room" method="post">
+            <div class="row ml-3 mr-3 mt-5">
+                {% if not user.guest %}
+                <div class="col-2">
+                    <label for="passport">Passport </label>
+                </div>
+                <div class="col-4">
+                    <input type="text" id="passport" name="passport" class="form-control">
+                </div>
+                <div class="col-2">
+                    <label for="country">Country </label>
+                </div>
+                <div class="col-4">
+                    <input type="text" id="country" name="country" class="form-control">
+                </div>
+                {% endif %}
+                <div class="col-2">
+                    <label for="Room">Room</label>
+                </div>
+                <div class="col-4">
+                    <select name="roomTypeName" class="form-control">
+                        {% for rm in RoomTypes %}
+                        <option value="{{rm.name}}">{{rm.name}} ${{rm.price}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-2">
+                    <label for="Bed">Bed</label>
+                </div>
+                <div class="col-4">
+                    <select name="bedTypeName" class="form-control">
+                        {% for bd in BedTypes %}
+                        <option value="{{bd.name}}">{{bd.name}} ${{bd.price}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-2">
+                    <label for="CheckInDate">In</label>
+                </div>
+                <div class="col-4">
+                    <input type="date" name="CheckInDate" required class="form-control">
+                </div>
+                <div class="col-2">
+                    <label for="CheckOuDate">Out</label>
+                </div>
+                <div class="col-4">
+                    <input type="date" name="CheckOutDate" required class="form-control">
+                </div>
+                <div class="col-12">
+                    <label for="Amenities">Amenities (Per night):</label>
+                </div>
+                {% for a in Amenities %}
+                {% if loop.index % 2 == 1 %}
+                <div class="col-6">
+                    <div>
+                        <input type="checkbox" name="amenityItemCodesList[]" value="{{a.itemCode}}">
+                        <label for="{{a.itemCode}}">{{a.itemCode}} ${{a.price}}</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    {% else %}
+                    <div>
+                        <input type="checkbox" name="amenityItemCodesList[]" value="{{a.itemCode}}">
+                        <label for="{{a.itemCode}}">{{a.itemCode}} ${{a.price}}</label>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col-12">
+                <div class="button-container justify-content-end">
+                    <button type="submit" class="btn btn-primary" value="book">Book</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

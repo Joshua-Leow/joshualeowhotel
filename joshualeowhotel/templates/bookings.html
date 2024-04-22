@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Book Room{% endblock %}
+{% block mainblock %}
+<div class="card card-common h-100">
+    <div class="card-header">
+        <h1>Bookings</h1>
+    </div>
+    <div class="card-body"><br>
+        <div class="row">
+            {% if not bookings %}
+            <div class="ml-5 card-body shaded-background rounded-border">
+                <span>You do not have any bookings yet.</span>
+            </div>
+            {% endif %}
+            <div class="col-4">
+                <div class="list-group" id="list-tab" role="tablist">
+                    {% for b in bookings | sort(attribute='checkInDate') %}
+                    <a class="list-group-item list-group-item-action" id="list-{{ loop.index }}-list" data-toggle="tab"
+                       href="#list-{{ loop.index }}" role="tab" aria-controls="list-{{ loop.index }}">{{
+                        b.checkInDate.strftime("%a, %d %b %Y") }}</a>
+                    {% endfor%}
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="tab-content" id="nav-tabContent">
+                    {% for b in bookings | sort(attribute='checkInDate') %}
+                    <div class="tab-pane fade" id="list-{{ loop.index }}" role="tabpanel"
+                         aria-labelledby="list-{{ loop.index }}">
+                        <b>
+                            <h5>Booking details:</h5>
+                        </b>
+                        <p>Check In Date: {{ b.checkInDate.strftime("%a, %d %b %Y") }}</p>
+                        <p>Check Out Date: {{ b.checkOutDate.strftime("%a, %d %b %Y") }}</p>
+                        <p>Status: {{ b.status }}</p>
+                        <p>Room Type: {{ b.roomSet.RoomType.name }}</p>
+                        <p>Bed Type: {{ b.roomSet.BedType.name }}</p>
+                        <h5>Amenities:</h5>
+                        <ol>
+                            {% for amenity in b.roomSet.amenities %}
+                            <li> {{ amenity.itemCode | lower }}</li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                    {% endfor%}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/myjs.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,205 @@
+/* Main Section */
+
+html {
+    scroll-behavior: smooth; /* added */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #eee;
+    justify-content: center; /* added */
+    align-items: center; /* added */
+    min-height: 100vh; /* added */
+    margin: 0; /* added */
+}
+
+.sub-body { /* added */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.shaded-background { /* added */
+    background-color: rgba(175, 175, 175, 0.548);
+}
+
+.light-blue-background { /* added */
+    background-color: rgba(155, 184, 207, 0.548);
+}
+
+.rounded-border { /* added */
+    border-radius: 10px;
+}
+
+.container-subtitle { /* added */
+    text-align: left;
+    background-color: rgba(110, 146, 212, 0.548);
+    color: #fff;
+    padding: 20px;
+    text-transform: capitalize;
+}
+
+.main-text { /* added */
+    text-align: left;
+    background-color: rgba(110, 146, 212, 0.548);
+    color: #fff;
+    padding: 20px;
+}
+
+.button-container { /* added */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-container a { /* added */
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.btn.btn-primary { /* added */
+    background-color: #525252;
+}
+
+.img-fluid {
+    max-width: 70%;
+    height: auto;
+    display: block; /* added */
+    margin: 0 auto; /* added */
+}
+
+#text-center { /* added */
+    text-align: center;
+}
+
+/* navbar */
+.sidebar {
+    height: 100vh;
+    background: linear-gradient(rgba(88, 151, 223, 0.548), rgba(0, 0, 0, 0.9)), url(../img/SAMI.jpg); /* changed */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 5px 7px 25px #999;
+}
+
+.bottom-border {
+    border-bottom: 1px groove #eee;
+}
+
+.sidebar-link {
+    transition: all .4s;
+}
+
+.sidebar-link:hover {
+    background-color: #444;
+    border-radius: 5px;
+}
+
+.current {
+    background-color: #f44336;
+    border-radius: 7px;
+    box-shadow: 2px 5px 10px #111;
+    transition: all .3s;
+}
+
+.current:hover {
+    background-color: #f66436;
+    border-radius: 7px;
+    box-shadow: 2px 5px 20px #111;
+    transform: translateY(-1px);
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #999;
+    transition: all .4s;
+}
+
+.search-input:focus {
+    background: transparent;
+    box-shadow: none;
+    border-bottom: 2px solid #dc3545;
+}
+
+.search-button {
+    border-radius: 50%;
+    padding: 10px 16px;
+    transition: all .4s;
+}
+
+.search-button:hover {
+    background-color: #eee;
+    transform: translateY(-1px);
+}
+
+.icon-parent {
+    position: relative;
+}
+
+.icon-bullet::after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 15px;
+    height: 12px;
+    width: 12px;
+    background-color: #f44336;
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: static;
+        height: auto;
+    }
+}
+
+.top-navbar {
+    position: static;
+    background: linear-gradient(rgba(185, 174, 235, 0.678), rgba(179, 170, 228, 0.658)); /* changed */
+}
+
+/* end of navbar */
+
+/* cards */
+
+.card{  /* added */
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.card-title { /* added */
+    text-transform: capitalize;
+}
+
+.card-common {
+    box-shadow: 1px 2px 5px #999;
+    transition: all .4s;
+}
+
+.card-common:hover {
+    box-shadow: 2px 3px 15px #999;
+    /* transform: translateY(-1px); */
+}
+
+input.form-control:hover {
+    border-bottom: 2px solid #54572f;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+/* end of cards */
+
+.list-group-item.list-group-item-action.active { /* added */
+    background-color: #111;
+}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Amenities{% endblock %}
+{% block mainblock %}
+
+<div class="container-subtitle">
+    <h4>Types of Amenity Available</h4>
+</div>
+<div class="row mr-1 ml-1 mt-2 justify-content-left">
+    {% for amenity in all_amenity_types %}
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 p-2">
+        <div class="card card-common h-100">
+            <div class="card-body">
+                <row>
+                    <i class="fa-solid fa-{{amenity.icon}} fa-3x" style="margin: 10px;"></i>
+                </row>
+                <row>
+                    <h5 class="card-title">{{amenity.itemCode}}</h5>
+                </row>
+                <row>
+                    <p class="card-text">{{amenity.description}}</p>
+                </row>
+                <row>
+                    <p class="card-text">Price: ${{amenity.price}} per night stay</p>
+                </row>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<br>
+<!-- Buttons -->
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <div class="button-container">
+            <a href="/rooms" class="btn btn-primary">Rooms</a>
+            <a href="#" class="btn btn-primary">Amenities</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
