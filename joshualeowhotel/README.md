@@ -1,31 +1,79 @@
-<h1>Hotel-booking-website</h1>
+# Joshua Leow Hotel Website
 
-<h2>Description</h2>
-<section>Developed a full-stack web application catering to the needs of a hotel management firm.<br>
-Include Admin user controls for Hotel Staff.</section><br>
+## Project Overview
 
-<b>Key Features Include:</b>
+This project implements a web application for a Hotel, allowing guests to customize their stay and manage bookings. The application is built using Flask, a Python web framework, and incorporates responsive web design principles.
 
-- <b>User authentication and session</b>
-- <b>Admin controls and dashboard</b>
-- <b>Bookings and reservations</b>
-<br />
+## Features
 
+1. Room and Amenity Information
+   - Display of available room types, bed types, and amenities
+   - Responsive design for various screen sizes
 
-<h2>Languages and Utilities Used</h2>
+2. User Authentication
+   - User registration
+   - Login and logout functionality
+   - Flash messages for successful/unsuccessful actions
 
-- <b>Python, Flask</b> 
-- <b>HTML, CSS, JavaScript</b>
-- <b>MongoDB</b>
+3. Booking System
+   - Room booking for registered users
+   - Display of user's bookings
+   - Guest details management
 
-<h2>Environments Used</h2>
+4. Admin Functions
+   - Upload hotel booking data
+   - Check-in functionality
+   - Booking trend visualization
 
-- <b>Linux</b>
+## Technologies Used
 
+- Backend: Flask (Python web framework)
+- Frontend: HTML, CSS, JavaScript
+- Database: MongoDB
+- Additional Libraries: 
+  - Bootstrap for responsive design
+  - jQuery for AJAX calls
+  - Chart.js for data visualization
 
-<h2>Program walk-through:</h2>
+## Key Components
+
+1. About, Rooms, and Amenities Pages
+   - Implemented using Jinja templating
+   - Data stored in MongoDB
+
+2. User Authentication System
+   - Registration, login, and logout functionality
+   - Session management
+
+3. Booking Management
+   - Room booking form with dynamic fields
+   - Booking list display using Bootstrap list groups
+
+4. Admin Panel
+   - File upload for booking data
+   - Check-in system with dropdown selection
+   - Chart generation for booking trends
+
+## Implementation Highlights
+
+- Use of Jinja templating for dynamic content rendering
+- AJAX calls for seamless user experience (e.g., check-in process)
+- Responsive design using Bootstrap
+- Data visualization using Chart.js
+- MongoDB integration for data storage
+
+## How to Run
 
 <h4>Launch the Application: </h4>
+
+```console
+python3 -m venv venv
+. venv/bin/activate
+pip install -r requirements.txt
+deactivate
+chmod +x start.sh
+./start.sh
+```
 <img src="assets/img/startCommands.JPG" height="80%" width="80%" alt="Start-up Steps"/>
 
 <h4>View application in various screen sizes: </h4>
